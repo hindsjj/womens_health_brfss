@@ -37,7 +37,10 @@ Stratifiers for each group: health district, household income, education, race c
 
 code("""import pandas as pd
 import plotly.graph_objects as go
+import plotly.io as pio
 from plotly.subplots import make_subplots
+
+pio.renderers.default = 'notebook_connected+plotly_mimetype'
 
 DATA_PATH = 'WomenPrecon_Full_AGG_Final4.3.26.xlsx'
 SHEET = 'Precon Health, Aggr 2020-2024'
