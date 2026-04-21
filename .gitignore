@@ -1,8 +1,7 @@
 # Virtualenv
 venv/
 
-# Source data (excluded by request — see CLAUDE.md for filename)
-*.xlsx
+# Excel temp/lock files (keep the actual .xlsx tracked)
 ~$*.xlsx
 
 # Jupyter
