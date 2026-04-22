@@ -4,7 +4,7 @@ Live status log for the project. Update after major steps.
 
 ## Goal
 
-Produce summary and comparative charts of Idaho BRFSS 2020–2024 women-18–49 aggregate data across four thematic groups, each broken out by four stratifiers. Delivered as a Jupyter notebook with interactive Plotly charts.
+Produce summary and comparative charts of Idaho BRFSS 2020–2024 women-18–49 aggregate data across four thematic groups, each broken out by six stratifiers. Delivered as a Jupyter notebook with interactive Plotly charts plus a static HTML export.
 
 ## Scope (confirmed with user 2026-04-20, extended 2026-04-21)
 
@@ -59,14 +59,18 @@ Four thematic groups share the same 6 stratifiers and RSE/CI conventions.
 
 - RSE > 30 estimates are kept but flagged visually (hatched/marker + figure note), not suppressed.
 - Unanimous (0/100%) rows appear without CIs — plot without error bars.
-- Output: one Jupyter notebook with interactive Plotly charts. No static/HTML export for now.
+- Output: one Jupyter notebook with interactive Plotly charts; a static HTML export is generated alongside via `nbconvert --to html` (Plotly renderer set to `notebook_connected+plotly_mimetype` so figures render from the CDN).
 - Small-multiples grid is 2 columns; number of rows is computed from the metric count. Odd counts (e.g., 7 mental metrics) leave the bottom-right slot blank.
 
 ## Deliverables
 
-- `analysis.ipynb` — load data, flag RSE>30, build charts
+- `analysis.ipynb` — load data, flag RSE>30, build charts (28 figures)
+- `analysis.html` — static HTML export, regenerated from the notebook
+- `scripts/build_notebook.py` — single source of truth for notebook contents
 - `requirements.txt` — pinned deps
-- `venv/` — local virtualenv (git-ignored if/when repo is created)
+- `WomenPrecon_Full_AGG_Final4.3.26.xlsx` — source data, tracked in git
+- `venv/` — local virtualenv (git-ignored)
+- GitHub repo: <https://github.com/hindsjj/womens_health_brfss> (private)
 
 ## Chart structure
 
@@ -94,12 +98,15 @@ Every panel: horizontal bars, 95% CI error bars when present, RSE>30 bars render
 - [x] Part B — Mental health: summary + 4 stratifier figures
 - [x] Part C — Health behaviors: summary + 4 stratifier figures
 - [x] Part D — Social drivers of health: summary + 4 stratifier figures
+- [x] Binary residence and BMI status added as 5th and 6th stratifiers (each Part now has 7 figures, 28 total)
 - [x] Full notebook executes end-to-end without error (`nbconvert --execute`)
 - [x] Income labels shortened to fit the 7-metric 4×2 layout
+- [x] Static HTML export wired up (`nbconvert --to html` produces `analysis.html`)
+- [x] Initialized git, pushed to private GitHub repo `hindsjj/womens_health_brfss` (initial commit + data file + HTML export)
 
 ## Current state (2026-04-21)
 
-Deliverables in repo: `analysis.ipynb` (generated, 28 figures), `scripts/build_notebook.py`, `requirements.txt`, `CLAUDE.md`, `PLAN.md`, `venv/`. Notebook produces 28 interactive Plotly figures:
+Tracked in the GitHub repo `hindsjj/womens_health_brfss` (private): `analysis.ipynb` (generated, 28 figures), `analysis.html` (static export), `scripts/build_notebook.py`, `requirements.txt`, `WomenPrecon_Full_AGG_Final4.3.26.xlsx`, `CLAUDE.md`, `PLAN.md`, `.gitignore`. Notebook produces 28 interactive Plotly figures:
 
 - **Part A:** 1 statewide summary + 6 comparative (district / income / education / race / residence / BMI) small-multiples for 6 physical-health metrics
 - **Part B:** 1 statewide summary + 6 comparative small-multiples for 7 mental-health metrics
