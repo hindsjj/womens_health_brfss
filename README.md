@@ -3,6 +3,9 @@
 ### Excel spreadsheet provided by Idaho BRFSS
 * WomenPrecon_Full_AGG_Final4.3.26.xlsx
 
+### Charts developed by University of Idaho using Claude Code
+* Contact Jennifer Hinds (jhinds@uidaho.edu), Research Computing and Data Services (RCDS)
+
 ## Data Source and Contact:
 * Source: Idaho Behavioral Risk Factor Surveillance System (BRFSS), 2020-2024
 * Idaho Department of Health and Welfare, Performance, Policy & Strategy, April 2026
